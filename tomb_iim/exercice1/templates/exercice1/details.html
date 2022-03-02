@@ -1,0 +1,4 @@
+<p>{{ question.text }}</p>
+<a href="{% url 'exercice1:index' %}">Retour</a>
+<a href="{% url 'exercice1:update' question.id %}">Modifier</a>
+<a href="{% url 'exercice1:delete' question.id %}">Supprimer</a>

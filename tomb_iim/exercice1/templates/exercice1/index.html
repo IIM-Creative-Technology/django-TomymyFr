@@ -1,0 +1,12 @@
+<p>Yeah i did it !</p>
+<a href="{% url 'exercice1:create' %}">Créer</a>
+
+{% for question in questions %}
+
+<p>{{ question.text }}</p>
+<!-- Link to current question -->
+<a href="{% url 'exercice1:details' question.id %}">Détails</a>
+<a href="{% url 'exercice1:update' question.id %}">Modifier</a>
+<a href="{% url 'exercice1:delete' question.id %}">Supprimer</a>
+<hr>
+{% endfor %}
