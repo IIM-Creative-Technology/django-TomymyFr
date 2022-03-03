@@ -11,6 +11,13 @@
     <div class="container">
       <h1>Fruit something</h1>
       <span> <a href="{% url 'shop:message' %}">Message</a></span>
+      {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        <a href="{% url 'shop:logout' %}">Log Out</a>
+      {% else %}
+        <a href="{% url 'shop:login' %}">Log In</a>
+        <a href="{% url 'shop:register' %}">Register</a>
+      {% endif %}
         <div class="row row-cols-4 my-3">
           {% for article in articles %}
             {% if article.quantity > 0 %}

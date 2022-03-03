@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect, response, Http404
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm 
 
 from .models import Article
-from .forms import ArticleForm
+from .forms import ArticleForm, SignUpUserForm
 from django.utils import timezone
 # Create your views here.
 
@@ -42,3 +44,30 @@ def details(request, article_id):
 # create a socket.io view to send message to client
 def message(request):
     return render(request, 'shop/message.html')
+
+def user_login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return HttpResponseRedirect('/shop/')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'shop/login.html')
+
+def user_register(request):
+    if request.method == 'POST':
+        form = SignUpUserForm(data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            login(request, user)
+            return HttpResponseRedirect('/shop/')
+    else:
+        form = SignUpUserForm()
+    return render(request, 'shop/register.html', {'form': form})
+
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/shop/')
