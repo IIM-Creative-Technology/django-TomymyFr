@@ -10,14 +10,18 @@
 <body>
     <div class="container">
       <h1>Fruit something</h1>
-      <span> <a href="{% url 'shop:message' %}">Message</a></span>
       {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-        <a href="{% url 'shop:logout' %}">Log Out</a>
-      {% else %}
-        <a href="{% url 'shop:login' %}">Log In</a>
-        <a href="{% url 'shop:register' %}">Register</a>
+        <p class="float-end text-capitalize">Hello {{ user.username }}</p>
       {% endif %}
+      <div class="btn-group" role="group"> 
+        <a href="{% url 'shop:message' %}" class="btn btn-outline-primary">Message</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'shop:logout' %}" class="btn btn-outline-danger">Log Out</a>
+      {% else %}
+        <a href="{% url 'shop:login' %}" class="btn btn-outline-primary">Log In</a>
+        <a href="{% url 'shop:register' %}" class="btn btn-outline-primary">Register</a>
+      {% endif %}
+      </div>
         <div class="row row-cols-4 my-3">
           {% for article in articles %}
             {% if article.quantity > 0 %}
@@ -31,7 +35,7 @@
                         <p class="card-text">Quantity : {{ article.quantity }} </p>
                     </div>
                     <div class="card-body">
-                      <a href="{% url 'shop:details' article.id %}" class="card-link">Buy</a>
+                      <a href="{% url 'shop:details' article.id %}" class="card-link btn btn-dark">Buy</a>
                     </div>
                 </div>
             </div>

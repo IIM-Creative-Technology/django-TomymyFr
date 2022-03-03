@@ -19,12 +19,17 @@
         <p class="card-text">{{ article.description }}</p>
         <p class="card-text"><small class="text-muted">{{ article.price }} €</small></p>
         <p class="card-text">Quantity : {{ article.quantity }} </p>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" class="row g-2">
             {% csrf_token %}
-            <input type="number" name="substract" value="1" min="1" max="{{ article.quantity }}">
-            <input type="submit" value="Submit">
+            <div class="col-auto">
+                <input type="number" name="substract" value="1" min="1" max="{{ article.quantity }}"
+                    class="form-control">
+            </div>
+            <div class="col-auto">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
         </form>
-        <a href="{% url 'shop:index' %}" class="btn btn-primary my-3">Back to article list</a>
+        <a href="{% url 'shop:index' %}" class="btn btn-secondary my-3">Back to article list</a>
     </div>
 </body>
 

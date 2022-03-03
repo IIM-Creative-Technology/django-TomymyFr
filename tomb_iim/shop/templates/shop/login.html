@@ -10,6 +10,12 @@
 <body>
     <div class="container">
         <h1>Login</h1>
+        {% if user.is_authenticated %}
+            You're already logged in.
+        <div>
+            <a href="{% url 'shop:logout' %}" class="btn btn-danger my-3">Logout and change user</a>
+        </div>
+        {% else %}
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
@@ -20,8 +26,13 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
             </div>
+            <div class="my-3">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'shop:register' %}" class="btn btn-light float-end">Register</a>
+            <a href="{% url 'shop:index' %}" class="btn btn-danger float-end">Cancel</a>
+            </div>
         </form>
+        {% endif %}
     </div>
 
 </body>

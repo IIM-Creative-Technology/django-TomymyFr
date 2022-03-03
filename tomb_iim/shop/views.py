@@ -66,7 +66,7 @@ def user_register(request):
             return HttpResponseRedirect('/shop/')
     else:
         form = SignUpUserForm()
-    return render(request, 'shop/register.html', {'form': form})
+    return render(request, 'shop/register.html')
 
 def user_logout(request):
     logout(request)

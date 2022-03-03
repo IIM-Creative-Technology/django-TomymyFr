@@ -11,16 +11,40 @@
 </head>
 
 <body>
-    <form method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <h1>Create a article</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <!-- Security token -->
+            {% csrf_token %}
+            <!-- form group name -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+            </div>
+            <!-- form group description -->
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
+            </div>
+            <!-- form group price -->
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" placeholder="Enter price">
+            </div>
+            <!-- form group image -->
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="text" class="form-control" id="image" name="image">
+            </div>
+            <!-- form group quantity -->
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity">
+            </div>
 
-        <!-- Security token -->
-        {% csrf_token %}
-
-        <!-- Using the formset -->
-        {{ form.as_p }}
-
-        <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
+            <input type="submit" value="Submit" class="btn btn-primary my-3">
+        </form>
+    </div>
 </body>
 
 </html>
