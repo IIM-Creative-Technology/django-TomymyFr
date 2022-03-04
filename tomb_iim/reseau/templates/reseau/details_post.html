@@ -21,6 +21,10 @@
                 <p class="card-text"><small class="text-muted text-capitalize">{{ post.created_by }}</small></p>
             </div>
         </div>
+        <a href="{% url 'reseau:index' %}" class="btn btn-primary">Retour</a>
+        {% if user.is_authenticated and user == post.created_by %}
+        <a href="{% url 'reseau:delete_post' post.id %}" class="btn btn-danger">Supprimer</a>
+        {% endif %}
     </div>
 </body>
 

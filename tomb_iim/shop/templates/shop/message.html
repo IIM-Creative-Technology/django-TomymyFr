@@ -15,13 +15,13 @@
     <div class="container d-flex flex-column">
         <div class="m-3">
             <h1>Message</h1>
-        <form id="form" class="form-group">
-            <input type="text" name="message" class="form-control" placeholder="Enter your message"/>
-            <input type="submit" value="Submit" class="btn btn-primary my-3"/>
-            <a href="{% url 'shop:index' %}" class="btn btn-secondary my-3">Back to article list</a>
-        </form>
-        <div id="messages"></div>
-    </div>
+            <form id="form" class="form-group">
+                <input type="text" name="message" class="form-control" placeholder="Enter your message" />
+                <input type="submit" value="Submit" class="btn btn-primary my-3" />
+                <a href="{% url 'shop:index' %}" class="btn btn-secondary my-3">Back to article list</a>
+            </form>
+            <div id="messages"></div>
+        </div>
     </div>
     <script type="text/javascript">
         let url = `ws://${window.location.host}/ws/socket-server/`
@@ -49,7 +49,7 @@
                 chat.send(JSON.stringify({
                     'message': '<span class="text-capitalize">{{user.username}}</span> : ' + message
                 }))
-            form.reset()
+                form.reset()
             }
         })
     </script>

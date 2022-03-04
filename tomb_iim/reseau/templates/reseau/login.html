@@ -11,20 +11,20 @@
     <div class="container">
         <h1>Se connecter</h1>
         {% if user.is_authenticated %}
-            You're already logged in.
+            Vous êtes déjà connecté.
         <div>
-            <a href="{% url 'reseau:logout' %}" class="btn btn-danger my-3">Logout and change user</a>
+            <a href="{% url 'reseau:logout' %}" class="btn btn-danger my-3">Se déconnecter</a>
         </div>
         {% else %}
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 <label for="username">Nom d'utilisateur</label>
-                <input type="username" class="form-control" id="username" name="username" placeholder="Enter Username">
+                <input type="username" class="form-control" id="username" name="username">
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password">
             </div>
             <div class="my-3">
             <button type="submit" class="btn btn-primary">Valider</button>
