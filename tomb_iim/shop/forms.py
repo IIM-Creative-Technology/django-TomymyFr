@@ -7,6 +7,7 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ['name', 'price', 'description', 'image', 'quantity']
+        
 
 class SignUpUserForm(UserCreationForm):
     class Meta:
