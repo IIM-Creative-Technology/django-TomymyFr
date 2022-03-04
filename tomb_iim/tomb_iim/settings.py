@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'channels',
+    'reseau.apps.ReseauConfig',
     'shop.apps.ShopConfig',
     'exercice1.apps.Exercice1Config',
     'django.contrib.admin',
